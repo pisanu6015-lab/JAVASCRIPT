@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบบันทึกรายรับรายจ่าย</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="budgetform.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <h2>บันทึก รายรับ-รายจ่าย</h2>
+        <br>
+        <form id="budgetform">
+            <label for="ProgramName">ชื่อรายการ</label>
+            <input type="text" name="ProgramName" id="ProgramName" required maxlength="50" placeholder="เช่น ค่าอาหาร, แม่ให้มา">
+
+            <label for="number">จำนวนเงิน</label>
+            <input type="number" name="number" id="number" required min="0" placeholder="0.00">
+
+            <label for="date">วันที่</label>
+            <input type="date" name="date" id="date" required>
+
+            <label for="time">เวลา</label>
+            <input type="time" name="time" id="time">
+
+            <label for="IncomeAndExpense">ประเภท</label>
+            <select name="IncomeAndExpense" id="IncomeAndExpense" required>
+                <option value="">-- กรุณาเลือกรายการ --</option>
+                <option value="Income">รายรับ</option>
+                <option value="Expenses">รายจ่าย</option>
+            </select>
+
+            <input type="submit" value="บันทึก">
+            <input type="reset" value="ยกเลิก">
+        </form>
+    </div>
+
+    <div class="container">
+        <label for="filterType">กรองรายการแสดงผล: </label>
+        <select id="filterType" onchange="filterTransactions()">
+            <option value="all">ทั้งหมด</option>
+            <option value="Income">เฉพาะรายรับ</option>
+            <option value="Expenses">เฉพาะรายจ่าย</option>
+        </select>
+
+        <hr>
+
+        <strong>รายการรายรับ</strong>
+        <ul id="Incomelist"></ul>
+        <p id="TotalIncome">ยอดรวมรายรับ: 0 บาท</p>
+
+        <hr>
+
+        <strong>รายการรายจ่าย</strong>
+        <ul id="Expenseslist"></ul>
+        <p id="TotalExpenses">ยอดรวมรายจ่าย: 0 บาท</p>
+
+        <p id="TotalBalance">ยอดคงเหลือ: 0 บาท</p>
+    </div>
+</body>
+
+</html>
